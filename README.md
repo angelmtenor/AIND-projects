@@ -1,7 +1,7 @@
 # AIND-projects
 Solved projects from Udacity's Artificial Intelligence Nanodegree
 
-* Python 3
+* All projects require Python 3
 
 ## Creators
 

@@ -7,7 +7,7 @@ The data consists of a text file of diagonal sudokus for you to solve.
 """
 
 
-def naked_twins(values): 
+def naked_twins(values):
     """
     Eliminate values using the naked twins strategy.
     Input: values(dict): a dictionary of the form {'box_name': '123456789', ...}
@@ -61,8 +61,6 @@ def naked_triplets(values):  # Improvement
     return values
 
 
-
-
 def cross(a, b):
     """
     Input:  a, b (string, tuple, list .. )
@@ -96,6 +94,10 @@ def display(values):
     Display the values as a 2-D grid.
     Input:  values(dict): The sudoku in dictionary form
     """
+    for k, v in values.items():
+        if len(v) > 1:
+            values[k] = " "
+
     width = 1 + max(len(values[s]) for s in boxes)
     line = '+'.join(['-' * (width * 3)] * 3)
     for r in rows:
@@ -182,9 +184,9 @@ def search(values):
 
     # reduce the puzzle
     values = reduce_puzzle(values)
-    if values is False:     # Unsolved (zero available values)
+    if values is False:  # Unsolved (zero available values)
         return False
-    if all(len(values[s]) == 1 for s in boxes):     # Solved
+    if all(len(values[s]) == 1 for s in boxes):  # Solved
         return values
 
     # choose one of the unfilled squares with the fewest possibilities
@@ -217,13 +219,21 @@ row_units = [cross(r, cols) for r in rows]
 column_units = [cross(rows, c) for c in cols]
 square_units = [cross(rs, cs) for rs in ('ABC', 'DEF', 'GHI') for cs in ('123', '456', '789')]
 diagonal_units = [[r + c for r, c in zip(rows, cols)], [r + c for r, c in zip(rows, cols[::-1])]]
-    # [['A1', 'B2', 'C3', 'D4', 'E5', 'F6', 'G7', 'H8', 'I9'], ['A9', 'B8', 'C7', 'D6', 'E5', 'F4', 'G3', 'H2', 'I1']]
+# [['A1', 'B2', 'C3', 'D4', 'E5', 'F6', 'G7', 'H8', 'I9'], ['A9', 'B8', 'C7', 'D6', 'E5', 'F4', 'G3', 'H2', 'I1']]
 unitlist = row_units + column_units + square_units + diagonal_units
 units = dict((s, [u for u in unitlist if s in u]) for s in boxes)
 peers = dict((s, set(sum(units[s], [])) - set([s])) for s in boxes)
 
-
 if __name__ == '__main__':
     diag_sudoku_grid = '2.............62....1....7...6..8...3...9...7...6..4...4....8....52.............3'
+    print("\n  Sudoku:\n")
+    display(grid_values(diag_sudoku_grid))
 
-    display(solve(diag_sudoku_grid))
+    solution = solve(diag_sudoku_grid)
+
+    if(solution):
+        print("\n  Solution found: \n")
+    else:
+        print("\n  Solution not found: \n")
+
+    display(solution)

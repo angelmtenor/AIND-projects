@@ -1,5 +1,5 @@
 # AIND-projects
-Solved projects from [Udacity's Artificial Intelligence Nanodegree](https://www.udacity.com/course/artificial-intelligence-nanodegree--nd889):
+Solved projects from Term 1 of [Udacity's Artificial Intelligence Nanodegree](https://www.udacity.com/course/artificial-intelligence-nanodegree--nd889):
 
 - **sudoku_solver:** build an intelligent agent that solves every diagonal Sudoku using constraint propagation and Search
 

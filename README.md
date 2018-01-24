@@ -1,7 +1,7 @@
 # AIND-projects
 Solved projects from Term 1 of [Udacity's Artificial Intelligence Nanodegree](https://www.udacity.com/course/artificial-intelligence-nanodegree--nd889):
 
-- **sudoku_solver:** build an intelligent agent that solves every diagonal Sudoku using constraint propagation and Search
+- **sudoku_solver:** build an intelligent agent that solves every diagonal Sudoku using constraint propagation and search
 
 - **isolation_player:** implement an effective adversarial search agent to play the game Isolation using minimax, alpha-beta pruning, and a custom heuristic evaluation function
 
